@@ -1,0 +1,27 @@
+@charset "utf-8";
+//渐变，此方法仅支持基础的线性两色渐变
+@mixin base-linear-gradient($direction, $color1, $color2) {
+  background: $color1;
+  background: -moz-linear-gradient($direction, $color1, $color2);   //Firefox 3.6 - 15
+  @if $direction == left {
+    background: -webkit-linear-gradient(right, $color1, $color2);   //Safari 5.1 - 6.0、Chrome 10+
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, $color1), color-stop(100%, $color2));    //Chrome,Safari 4+
+  }
+  @else if $direction == right {
+    background: -webkit-linear-gradient(left, $color1, $color2);    //Safari 5.1 - 6.0、Chrome 10+
+    background: -webkit-gradient(linear, right top, left top, color-stop(0%, $color1), color-stop(100%, $color2));    //Chrome,Safari 4+
+  }
+  @else if $direction == top {
+    background: -webkit-linear-gradient(bottom, $color1, $color2);  //Safari 5.1 - 6.0、Chrome 10+
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0%, $color1), color-stop(100%, $color2));    //Chrome,Safari 4+
+  }
+  @else if $direction == bottom {
+    background: -webkit-linear-gradient(top, $color1, $color2);     //Safari 5.1 - 6.0、Chrome 10+
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $color1), color-stop(100%, $color2));    //Chrome,Safari 4+
+  }
+  background: -o-linear-gradient($direction, $color1, $color2);     //Opera 11.1 - 12.0
+  background: -ms-linear-gradient($direction, $color1, $color2);    //IE10+
+  background: linear-gradient(to $direction, $color1, $color2);     //W3C
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$color1, endColorstr=$color2,GradientType=1 );      //IE6-8
+  filter: none\9;                                                   //ie9
+};
