@@ -19,18 +19,13 @@ html, body {
 #header {
   height: 60px;
   position: relative;
-  @include base-linear-gradient('left', #45a2ff, #55bcff);
+  //@include base-linear-gradient('left', #45a2ff, #55bcff);
+  background: #fafafa;
 }
 
 #logo {
-  height: 50px;
-  margin: 5px 0 5px 20px;
-}
-
-#content {
-  min-height: calc(100% - 140px);
-  min-height: -moz-calc(100% - 140px);
-  min-height: -webkit-calc(100% - 140px);
+  height: 40px;
+  margin: 10px 0 10px 20px;
 }
 
 #footer {

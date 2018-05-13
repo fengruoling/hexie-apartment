@@ -1,7 +1,7 @@
 <template>
   <div id="footer">
     <p>
-      <span v-for="item in footerItem"><a>{{item.label}}</a></span>
+      <span :key="item.id" v-for="item in footerItem"><a>{{item.label}}</a></span>
     </p>
     <p>Copyright © 2018 - 2019 &nbsp;&nbsp;&nbsp;&nbsp;版权所有 FMZ</p>
   </div>
@@ -12,8 +12,8 @@ export default {
   data () {
     return {
       footerItem: [
-        {label: '意见反馈'},
-        {label: '联系我'}
+        {id: 1, label: '意见反馈'},
+        {id: 2, label: '联系我'}
       ]
     }
   }
