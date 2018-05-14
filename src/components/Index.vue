@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="wrap">
-      <el-carousel height="400px">
+      <el-carousel height="500px">
         <el-carousel-item v-for="item in 4" :key="item"></el-carousel-item>
       </el-carousel>
       <div class="login-box">
@@ -42,8 +42,8 @@ export default {
     position: absolute;
     padding: 5px;
     background: rgba(255, 255, 255, 0.3);
-    top: 20px;
-    right: 50px;
+    top: 106px;
+    right: 100px;
     z-index: 2;
   }
 
@@ -64,7 +64,7 @@ export default {
     display: block;
     width: 15%;
     height: 2px;
-    background: #eee;
+    background: #e5e5e5;
     top: 50%
   }
 
