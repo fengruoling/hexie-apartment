@@ -10,21 +10,58 @@
       <input type="text" v-model="password"/>
     </div>
     <div class="check-row">
+      <span class="loginTip" v-show="showTip">{{tipMessage}}</span>
       <el-checkbox v-model="checked">记住密码</el-checkbox>
     </div>
     <div class="button-row">
-      <router-link to="/home">登录</router-link>
+      <button @click="login">登录</button>
     </div>
   </form>
 </template>
 
 <script>
+import {setCookie, getCookie} from '../assets/js/cookie'
+
 export default {
   data () {
     return {
       username: '',
       password: '',
+      showTip: false,
+      tipMessage: '',
       checked: false
+    }
+  },
+  mounted () {
+    if (getCookie('username')) {
+      this.$router.push('/home')
+    }
+  },
+  methods: {
+    login () {
+      if (this.username === '') {
+        this.tipMessage = '用户名不能为空！'
+        this.showTip = true
+        return false
+      }
+      if (this.password === '') {
+        this.tipMessage = '密码不能为空！'
+        this.showTip = true
+        return false
+      }
+      // TODO  调用接口判断用户名密码是否正确
+      if (this.username === 'admin' && this.password === '123') {
+        this.tipMessage = '登录成功！正在为您跳转…'
+        this.showTip = true
+        setCookie('username', this.username, 1000 * 60)
+        setTimeout(function () {
+          this.$router.push('/home')
+        }.bind(this), 1000)
+      } else {
+        this.tipMessage = '用户名或密码不正确！'
+        this.showTip = true
+        return false
+      }
     }
   }
 }
@@ -61,7 +98,7 @@ export default {
 
   .input-row label {
     position: absolute;
-    top: 0px;
+    top: 0;
     left: 15px;
     font-size: 13px;
     color: #666;
@@ -88,20 +125,30 @@ export default {
     line-height: 30px;
   }
 
+  .loginTip {
+    float: left;
+    color: #F35A5A;
+  }
+
   .button-row {
     text-align: center;
     margin: 8px 0 0;
     font-size: 14px;
   }
 
-  .button-row a {
-    text-decoration: none;
-    display: inline-block;
+  .button-row button {
     background: #49AEEB;
     color: white;
     width: 250px;
     height: 34px;
     line-height: 34px;
     border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .button-row button:hover {
+    background: #8ABAF0;
   }
 </style>
