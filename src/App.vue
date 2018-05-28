@@ -26,7 +26,7 @@ export default {
   overflow-y: auto;
 }
 .container {
-  height: 0;
+  height: auto;
   min-height: calc(100% - 140px);
   min-height: -moz-calc(100% - 140px);
   min-height: -webkit-calc(100% - 140px);

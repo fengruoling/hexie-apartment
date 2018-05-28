@@ -6,6 +6,7 @@ import ElementUI from 'element-ui'
 
 import 'element-ui/lib/theme-chalk/index.css'
 import '../theme/css/system.main.css'
+import '../theme/css/iconmoon-font.css'
 
 import App from './App'
 
